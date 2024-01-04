@@ -1,4 +1,4 @@
-import Router, { Context } from "@qpoint/router";
+import Endpoint, { Context } from "@qpoint/endpoint";
 
 export interface Env {
   // Example binding to KV. Learn more at https://developers.cloudflare.com/workers/runtime-apis/kv/
@@ -11,7 +11,7 @@ export interface Env {
   // MY_BUCKET: R2Bucket;
 }
 
-export default new Router<Env>()
+export default new Endpoint<Env>()
   .use((ctx: Context, next: Function) => {
     ctx.response = new Response("Hello Qpoint!");
 

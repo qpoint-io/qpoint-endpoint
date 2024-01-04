@@ -57,7 +57,7 @@ export class Context<Env = any> {
     // set the execution context of the runtime
     this.ctx = ctx;
 
-    // allow the router init to set the initial state
+    // allow the endpoint init to set the initial state
     this.state = state;
 
     // start with an empty list of tags

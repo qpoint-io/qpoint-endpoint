@@ -1,22 +1,22 @@
 # Qpoint
 
-Intelligence at the edge - an edge router framework
+Intelligence at the edge - an edge endpoint framework
 
 Compose powerful edge capabilities to analyze, transform, reject, or proxy traffic as it passes through the edge to your apps. 
 
-Designed to run within [worker runtimes](https://workers.js.org/), a qpoint router can be deployed trivially to edge networks like [Cloudflare Workers](https://workers.cloudflare.com/) and [Deno Deploy](https://deno.com/deploy), or with the help of [Qpoint](https://qpoint.io), deploy to any platform including your own servers.
+Designed to run within [worker runtimes](https://workers.js.org/), a qpoint endpoint can be deployed trivially to edge networks like [Cloudflare Workers](https://workers.cloudflare.com/) and [Deno Deploy](https://deno.com/deploy), or with the help of [Qpoint](https://qpoint.io), deploy to any platform including your own servers.
 
 ## Example
 
 ```ts
-import Router from '@qpoint/router'
+import Endpoint from '@qpoint/endpoint'
 import proxy from '@qpoint/proxy'
 import maskUrls from '@qpoint/mask-urls'
 import replaceContent from '@qpoint/replace-content'
 import rewriteHtml from '@qpoint/rewrite-html'
 
-// initialize and export the router
-export default new Router()
+// initialize and export the endpoint
+export default new Endpoint()
 
   // proxy request to app
   .use(proxy({ appUrl:"https://qdemo.io" }))
@@ -37,7 +37,7 @@ Adapters are middleware functions to be executed in a chain, each potentially mo
 
 Example: Reject the request (at the edge) if no auth is provided
 ```ts
-router.use((ctx: Context, next: Function) => {
+endpoint.use((ctx: Context, next: Function) => {
   
   // check for the Authorization header
   if (!ctx.request.headers.has("Authorization")) {
@@ -59,7 +59,7 @@ router.use((ctx: Context, next: Function) => {
 Each adapter receives a Qpoint [Context](https://github.com/qpoint-io/qpoint/blob/main/src/context.ts) object that wraps an incoming request and the corresponding response. `ctx` is often used as the parameter name for the context object.
 
 ```ts
-router.use(async (ctx: Context, next: Function) => { await next(); });
+endpoint.use(async (ctx: Context, next: Function) => { await next(); });
 ```
 
 After each of the adapters have run, the response as set on the context will be returned. 
@@ -71,3 +71,5 @@ A very common case for Qpoint is building intelligent proxies and load balancers
 
 In such a scenario, adapters that need to modify the request before a proxy fetch occurs will sequencially modify or replace the `proxy` instance as the chain progresses.
 
+## Releasing New Versions
+To release a new version create a `New Release` in GitHub with an incremented tag in the format of `v#.#.#`. GitHub will automatically generate the changelog since the last release version. After creation, a GitHub action will be kicked off to build, tests, set the npm version, and publish.

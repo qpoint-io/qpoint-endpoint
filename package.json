@@ -1,7 +1,7 @@
 {
-  "name": "@qpoint/router",
-  "version": "0.2.1",
-  "description": "Qpoint - an intelligent edge router framework",
+  "name": "@qpoint/endpoint",
+  "version": "0.0.0",
+  "description": "Qpoint - an intelligent edge endpoint framework",
   "author": "Tyler Flint <tyler@qpoint.io>",
   "homepage": "https://qpoint.io",
   "license": "Apache-2.0",
@@ -15,6 +15,7 @@
   ],
   "scripts": {
     "build": "tsc",
+    "bundle": "npx esbuild src/index.ts --outdir=dist --bundle --sourcemap=external --platform=browser --format=esm",
     "release": "npm publish --access=public"
   },
   "dependencies": {
