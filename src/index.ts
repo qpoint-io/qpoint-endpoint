@@ -1,7 +1,7 @@
 export * from './context'
-export * from './router'
+export * from './endpoint'
 export * from './mime'
 
-// re-export router as the default export
-import { Router } from './router'
-export default Router
+// re-export endpoint as the default export
+import { Endpoint } from './endpoint'
+export default Endpoint

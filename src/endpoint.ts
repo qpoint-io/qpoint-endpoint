@@ -1,8 +1,8 @@
 import compose from 'koa-compose'
 import { Context } from './context'
 
-// The Qpoint router: a middleware pattern for handling requests
-export class Router<Env = any> {
+// The Qpoint endpoint: a middleware pattern for handling requests
+export class Endpoint<Env = any> {
   state: Object
   stack: Function[]
 

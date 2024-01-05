@@ -21,6 +21,6 @@
     "wrangler": "2.0.23"
   },
   "dependencies": {
-    "@qpoint/router": "^0.1.2"
+    "@qpoint/endpoint": "file:../.."
   }
 }
