@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
     "noEmit": true,
-    "module": "esnext",
-    "target": "es2020",
+    "module": "ESNext",
+    "target": "esnext",
     "lib": [
-      "es2020"
+      "esnext"
     ],
     "strict": true,
     "alwaysStrict": true,

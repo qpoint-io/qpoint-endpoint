@@ -19,6 +19,7 @@
     "release": "npm publish --access=public"
   },
   "dependencies": {
+    "htmlrewriter": "^0.0.4",
     "koa-compose": "^4.1.0"
   },
   "devDependencies": {
