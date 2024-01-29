@@ -35,13 +35,13 @@ export class Endpoint<Env = any> {
 
       // compose the request middlewares
       const run = compose(this.stack);
-    
+
       // run the stack
       await run(context);
 
       // return the response
       return context.response;
-      
+
     } catch (error) {
       console.error(`Unhandled stack error: ${error.message}`)
       console.error(error.stack)
@@ -50,3 +50,19 @@ export class Endpoint<Env = any> {
     }
   }
 }
+
+export function GetEnv(key: string): string | undefined {
+  let value: string | undefined;
+
+  // Using type assertion for Deno
+  if (typeof (globalThis as any).Deno !== "undefined") {
+    value = (globalThis as any).Deno.env.get(key);
+  }
+  // Using type assertion for process
+  else if (typeof (globalThis as any).process !== "undefined" && (globalThis as any).process.env) {
+    value = (globalThis as any).process.env[key];
+  }
+
+  return value;
+}
+
